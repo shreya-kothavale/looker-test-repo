@@ -1,4 +1,4 @@
-connection: "qai_de_looker_training_prod_q03617_shreya_kothavale"
+connection: "@{connection_name}"
 
 # include all the views
 include: "/views/**/dialogflow_cleaned_logs.view"

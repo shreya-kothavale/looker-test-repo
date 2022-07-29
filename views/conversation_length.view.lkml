@@ -7,7 +7,7 @@ view: conversation_length {
       from
       (SELECT session_id, avg(sentiment_score) as sentiment_score, min( time_stamp ) as start_time, max( time_stamp ) as end_time, count(distinct response_ID) as count_of_msg, MIN( time_stamp ) as session_date_time,
       min(date) as date
-      FROM dialogflow_cleaned_logs
+      FROM `@{gcp_project}.@{dataset}.dialogflow_cleaned_logs`
       group by session_id)
       ;;
   }
