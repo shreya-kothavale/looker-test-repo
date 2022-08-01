@@ -12,7 +12,7 @@ constant: connection_name {
 }
 
 constant: model_name {
-  value: "looker_test_q03617"
+  value: "looker_test"
 }
 
 constant: gcp_project {
