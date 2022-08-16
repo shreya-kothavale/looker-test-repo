@@ -21,7 +21,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#1032d1"
+    custom_color: "#FF0000"
     single_value_title: Total Sessions
     show_view_names: false
     show_row_numbers: true
