@@ -1,12 +1,14 @@
-- dashboard: training_prod_dashboard
+- dashboard: looker_test_q03617_dashboard
   title: Looker Training Dashboard
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
   elements:
+  
+  
   - title: total_sessions
     name: total_sessions
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.total_sessions]
@@ -21,7 +23,7 @@
     enable_conditional_formatting: false
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
-    custom_color: "#1032d1"
+    custom_color: "#FF0000"
     single_value_title: Total Sessions
     show_view_names: false
     show_row_numbers: true
@@ -55,7 +57,7 @@
     height: 2
   - title: avg_queries_per_session
     name: avg_queries_per_session
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.average_queries_per_session]
@@ -96,7 +98,7 @@
     height: 2
   - title: avg sessions per day
     name: avg sessions per day
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.average_session_per_day]
@@ -125,7 +127,7 @@
     height: 2
   - title: avg session duration
     name: avg session duration
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: single_value
     fields: [conversation_length.avg_session_duration]
@@ -152,7 +154,7 @@
     height: 2
   - title: 'Busiest Hour '
     name: 'Busiest Hour '
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_funnel
     fields: [session_level.total_sessions, conversation_length.hour_frame]
@@ -198,7 +200,7 @@
     height: 7
   - title: Sentiment Distribution
     name: Sentiment Distribution
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_pie
     fields: [dialogflow_cleaned_logs.count, dialogflow_cleaned_logs.sentiment_bucket_1]
@@ -273,7 +275,7 @@
     height: 4
   - title: Timeframe Trend
     name: Timeframe Trend
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_area
     fields: [session_level.total_sessions, conversation_length.hour_frame, conversation_length.session_date_time_hour_of_day]
@@ -348,7 +350,7 @@
     height: 6
   - title: Avg Sentiment Score
     name: Avg Sentiment Score
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: marketplace_viz_radial_gauge::radial_gauge-marketplace
     fields: [dialogflow_cleaned_logs.average_sentiment_score]
@@ -399,7 +401,7 @@
     height: 4
   - title: Success rate
     name: Success rate
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.success_rate]
@@ -481,7 +483,7 @@
     height: 2
   - title: Handled queries
     name: Handled queries
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.count]
@@ -534,7 +536,7 @@
     height: 2
   - title: Total Queries
     name: Total Queries
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.count]
@@ -585,7 +587,7 @@
     height: 2
   - title: unhandled queries
     name: unhandled queries
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: single_value
     fields: [dialogflow_cleaned_logs.count]
@@ -638,7 +640,7 @@
     height: 2
   - title: Avg Sentiment Weekly Trend
     name: Avg Sentiment Weekly Trend
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_column
     fields: [dialogflow_cleaned_logs.time_stamp_week, dialogflow_cleaned_logs.average_sentiment_score]
@@ -745,7 +747,7 @@
     height: 4
   - title: user utterances
     name: user utterances
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_grid
     fields: [dialogflow_cleaned_logs.query_text, dialogflow_cleaned_logs.total_sessions]
@@ -794,7 +796,7 @@
     height: 12
   - title: top 10 positive user utterances
     name: top 10 positive user utterances
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_grid
     fields: [dialogflow_cleaned_logs.query_text, dialogflow_cleaned_logs.sentiment_score]
@@ -849,7 +851,7 @@
     height: 6
   - title: top 10 negative user utterances
     name: top 10 negative user utterances
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_grid
     fields: [dialogflow_cleaned_logs.query_text, dialogflow_cleaned_logs.sentiment_score]
@@ -920,7 +922,7 @@
     height: 2
   - title: weekly traffic
     name: weekly traffic
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_column
     fields: [session_level.total_sessions, conversation_length.session_date_time_week]
@@ -977,7 +979,7 @@
     height: 6
   - title: Call Duration *
     name: Call Duration *
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_column
     fields: [session_level.total_sessions, conversation_length.call_duration_bucket]
@@ -1037,7 +1039,7 @@
     height: 6
   - title: Call Duration vs Avg Sentiment Score *
     name: Call Duration vs Avg Sentiment Score *
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_column
     fields: [conversation_length.call_duration_bucket, conversation_length.avg_sentiment_score]
@@ -1110,7 +1112,7 @@
     height: 2
   - title: Traffic By Entry Intent
     name: Traffic By Entry Intent
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_column
     fields: [session_level.entry_intent, session_level.total_sessions]
@@ -1178,7 +1180,7 @@
     height: 6
   - title: Traffic By Exit Intent
     name: Traffic By Exit Intent
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_bar
     fields: [exit_intent.exit_intent, session_level.total_sessions]
@@ -1225,7 +1227,7 @@
     height: 6
   - title: Weekly Intents Trend
     name: Weekly Intents Trend
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_line
     fields: [dialogflow_cleaned_logs.time_stamp_week, dialogflow_cleaned_logs.intent_triggered,
@@ -1297,7 +1299,7 @@
     height: 11
   - title: Intent Wise Information
     name: Intent Wise Information
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_grid
     fields: [dialogflow_cleaned_logs.intent_triggered, dialogflow_cleaned_logs.total_sessions,
@@ -1448,7 +1450,7 @@
     height: 6
   - title: Total Queries vs Call Duration *
     name: Total Queries vs Call Duration *
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_column
     fields: [conversation_length.call_duration_bucket, dialogflow_cleaned_logs.count]
@@ -1533,7 +1535,7 @@
     height: 6
   - title: Session Distribution vs Call Deflection *
     name: Session Distribution vs Call Deflection *
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_column
     fields: [session_level.total_sessions, deflection.deflection_bucket]
@@ -1584,7 +1586,7 @@
     height: 5
   - title: Deflection Rate *
     name: Deflection Rate *
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: session_level
     type: looker_pie
     fields: [session_level.total_sessions, deflection.deflection_rate]
@@ -1637,7 +1639,7 @@
     height: 5
   - title: Intent Co-occurance
     name: Intent Co-occurance
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     type: looker_column
     fields: [intent_correlation.intent_triggered, intent_correlation.intent_list,
@@ -1801,7 +1803,7 @@
       type: relative_timeframes
       display: inline
       options: []
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     listens_to_filters: []
     field: dialogflow_cleaned_logs.date_date
@@ -1815,7 +1817,7 @@
       type: tag_list
       display: popover
       options: []
-    model: qai_de_looker_training_prod_q03617_shreya_kothavale
+    model: "@{model_name}"
     explore: dialogflow_cleaned_logs
     listens_to_filters: []
     field: dialogflow_cleaned_logs.intent_triggered

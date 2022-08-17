@@ -1,8 +1,22 @@
-connection: "qai_de_looker_training_prod_q03617_shreya_kothavale"
+connection: "@{connection_name}"
 
-include: "/views/*.view.lkml"                # include all views in the views/ folder in this project
-# include: "/**/*.view.lkml"                 # include all views in this project
-# include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
+# include all the views
+include: "/views/**/dialogflow_cleaned_logs.view"
+include: "/views/**/session_level.view"
+include: "/views/**/exit_intent.view"
+include: "/views/**/second_last_intent.view"
+include: "/views/**/conversation_length.view"
+include: "/views/**/deflection.view"
+include: "/views/**/intent_correlation.view"
+include: "/dashboard/looker_test_q03617_dashboard.dashboard.lookml"
+
+# datagroup: looker_test_q03617_default_datagroup {
+#   # sql_trigger: SELECT MAX(id) FROM etl_log;;
+#   max_cache_age: "every 1 minute"
+#   interval_trigger: "every 1 minute"
+# }
+
+# persist_with: looker_test_q03617_default_datagroup_default_datagroup
 
 explore: dialogflow_cleaned_logs {
   join: conversation_length {
@@ -18,17 +32,31 @@ explore: dialogflow_cleaned_logs {
   }
 }
 
-# # Select the views that should be a part of this model,
-# # and define the joins that connect them together.
-#
-# explore: order_items {
-#   join: orders {
-#     relationship: many_to_one
-#     sql_on: ${orders.id} = ${order_items.order_id} ;;
-#   }
-#
-#   join: users {
-#     relationship: many_to_one
-#     sql_on: ${users.id} = ${orders.user_id} ;;
-#   }
-# }
+explore: session_level {
+  join: exit_intent {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: session_level.session_id = exit_intent.session_id ;;
+    # fields: [exit_intent]
+  }
+  join: second_last_intent {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: session_level.session_id = second_last_intent.session_id ;;
+    # fields: [second_last_intent]
+  }
+  join: conversation_length {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: session_level.session_id = conversation_length.session_id ;;
+    # fields: []
+  }
+  join: deflection {
+    type: left_outer
+    relationship: one_to_one
+    sql_on: session_level.session_id = deflection.session_id ;;
+    # fields: []
+  }
+
+
+}

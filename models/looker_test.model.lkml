@@ -1,4 +1,4 @@
-connection: "qai_de_looker_training_prod_q03617_shreya_kothavale"
+connection: "@{connection_name}"
 
 # include all the views
 include: "/views/**/dialogflow_cleaned_logs.view"
@@ -8,15 +8,15 @@ include: "/views/**/second_last_intent.view"
 include: "/views/**/conversation_length.view"
 include: "/views/**/deflection.view"
 include: "/views/**/intent_correlation.view"
-include: "/dashboard/training_prod_dashboard.dashboard.lookml"
+include: "/dashboard/looker_test_q03617_dashboard.dashboard.lookml"
 
-datagroup: qai_de_looker_training_q03617_shreya_kothavale_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
-  max_cache_age: "every 1 minute"
-  interval_trigger: "every 1 minute"
-}
+# datagroup: looker_test_q03617_default_datagroup {
+#   # sql_trigger: SELECT MAX(id) FROM etl_log;;
+#   max_cache_age: "every 1 minute"
+#   interval_trigger: "every 1 minute"
+# }
 
-persist_with: qai_de_looker_training_q03617_shreya_kothavale_default_datagroup
+# persist_with: looker_test_q03617_default_datagroup_default_datagroup
 
 explore: dialogflow_cleaned_logs {
   join: conversation_length {
@@ -26,9 +26,9 @@ explore: dialogflow_cleaned_logs {
     # fields: [call_duration_bucket, session_id]
   }
   join: intent_correlation {
-      type: left_outer
-      relationship: one_to_many
-      sql_on: dialogflow_cleaned_logs.response_id = intent_correlation.response_id ;;
+    type: left_outer
+    relationship: one_to_many
+    sql_on: dialogflow_cleaned_logs.response_id = intent_correlation.response_id ;;
   }
 }
 
