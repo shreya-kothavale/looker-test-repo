@@ -1,0 +1,5 @@
+{
+dev:[project_id='a'],
+qa:[project_id='b'],
+prod:[project_id='c']
+}
