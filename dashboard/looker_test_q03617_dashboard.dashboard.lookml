@@ -4,8 +4,8 @@
   preferred_viewer: dashboards-next
   description: ''
   elements:
-  
-  
+
+
   - title: total_sessions
     name: total_sessions
     model: "@{model_name}"

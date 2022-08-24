@@ -8,7 +8,9 @@ include: "/views/**/second_last_intent.view"
 include: "/views/**/conversation_length.view"
 include: "/views/**/deflection.view"
 include: "/views/**/intent_correlation.view"
+include: "/views/**/state_code_table.view"
 include: "/dashboard/looker_test_q03617_dashboard.dashboard.lookml"
+
 
 # datagroup: looker_test_q03617_default_datagroup {
 #   # sql_trigger: SELECT MAX(id) FROM etl_log;;
@@ -59,4 +61,16 @@ explore: session_level {
   }
 
 
+}
+
+explore: state_code_table {}
+
+map_layer: usa_canada_map {
+  # feature_key: "ISO_A3"
+  file: "/maps/usa_canada_map.topo.json"
+  format: topojson
+  label: "USA Canada Region"
+  # projection: airy
+  property_key: "usa"
+  property_label_key: "NAME"
 }
