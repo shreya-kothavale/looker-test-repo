@@ -9,20 +9,16 @@ project_name: "looker_test_q03617"
 
 constant: connection_name {
   value: "qai_de_looker_training_prod_q03617_shreya_kothavale"
-  export: override_required
 }
 
 constant: model_name {
   value: "looker_test"
-  export: override_required
 }
 
 constant: gcp_project {
   value: "qp-qai-training-1-2021-05"
-  export: override_required
 }
 
 constant: dataset {
   value: "looker_training_prod"
-  export: override_required
 }
