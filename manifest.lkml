@@ -8,7 +8,7 @@ project_name: "looker_test_q03617"
 # }
 
 constant: connection_name {
-  value: "qai_de_looker_training_prod_q03617_shreya_kothavale"
+  value: "qai_de_looker_training_prod_q03617_shreya_kothavale_updated"
 }
 
 constant: model_name {
