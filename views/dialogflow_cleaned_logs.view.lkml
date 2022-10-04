@@ -164,6 +164,24 @@ view: dialogflow_cleaned_logs {
     sql: ${session_id} ;;
   }
 
+  #====================================
+  dimension_group: previous_start_time {
+    type: time
+    timeframes: [raw, time, date, week, month, quarter, year]
+    sql:
+    SELECT time_stamp FROM `qp-qai-training-1-2021-05.looker_training_prod.dialogflow_cleaned_logs`
+    WHERE  DATE(time_stamp) >= DATE_ADD({% date_start time_stamp_date %},INTERVAL (ifnull(DATE_DIFF({% date_start time_stamp_date %},{% date_end time_stamp_date %},DAY) DAY,0)))
+    and DATE(time_stamp) <= {% date_start time_stamp_date %}
+    ;;
+  }
+
+  measure: total_session_previous_duration{
+    type: count_distinct
+    sql: ${session_id};;
+
+  }
+  #====================================
+
   measure: average_queries_per_session {
     type: number
     sql: if(${total_sessions} > 0,count(${query_text})/${total_sessions}, 0) ;;

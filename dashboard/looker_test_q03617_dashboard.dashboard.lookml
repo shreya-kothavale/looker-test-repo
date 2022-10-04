@@ -3,6 +3,13 @@
   layout: newspaper
   preferred_viewer: dashboards-next
   description: ''
+  embed_style:
+    background_color: "#3B3B3B"
+    # show_title: true | false
+    title_color: "#FFFFFF"
+    # show_filters_bar: false
+    tile_background_color: "#696969"
+    tile_text_color: "#FFFFFF"
   elements:
 
 
@@ -1796,7 +1803,7 @@
   - name: Date Range
     title: Date Range
     type: field_filter
-    default_value: 30 day
+    default_value: 2022/01/01 to 2022/02/01
     allow_multiple_values: true
     required: false
     ui_config:
